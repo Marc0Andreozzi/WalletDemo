@@ -16,7 +16,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name= "email",unique = true, nullable = false)
     @Size(max = 254, message = "Email può contenere fino a 254 caratteri")
     @Pattern(regexp = "[^@]+@[^\\.]+\\..+", message = "Formato Email non valido")
     private String email;
