@@ -7,4 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     User save(User user);
+
+    public void deleteById(User user);
+
 }
