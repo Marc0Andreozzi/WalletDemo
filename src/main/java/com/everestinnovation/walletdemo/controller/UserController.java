@@ -35,14 +35,14 @@ public class UserController {
 
         userService.save(user);
 
-
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     public void deleteUser(User user){
 
         log.info("Richiesta ricevuta per cancellare un Utente.", LogLevel.INFO);
-        log.info(user.toString());
+        String userdId = String.valueOf(user.getId());
+        log.info("Id: " + userdId);
 
         userService.deleteById(user);
     }
