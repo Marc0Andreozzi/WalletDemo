@@ -37,11 +37,11 @@ public class User {
     private String confermaPassword;
 
     @NotNull
-    @Column(name= "tipoUtenza")
+    @Column(name= "tipo_utenza")
     private String tipoUtenza;
 
     @NotNull
-    @Column(name= "tipoWallet")
+    @Column(name= "tipo_wallet")
     private String tipoWallet;
 
 }
