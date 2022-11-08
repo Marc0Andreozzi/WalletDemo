@@ -37,9 +37,11 @@ public class User {
     private String confermaPassword;
 
     @NotNull
+    @Column(name= "tipoUtenza")
     private String tipoUtenza;
 
     @NotNull
+    @Column(name= "tipoWallet")
     private String tipoWallet;
 
 }
