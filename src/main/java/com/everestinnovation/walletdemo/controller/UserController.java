@@ -38,6 +38,17 @@ public class UserController {
 
     }
 
+    @DeleteMapping("/delete")
+    public void deleteUser(User user){
+
+        log.info("Richiesta ricevuta per cancellare un Utente.", LogLevel.INFO);
+        log.info(user.toString());
+
+        userService.deleteById(user);
+    }
+
+
+
     @GetMapping("/list")
     public Iterable<User> list(){
         return userService.list();
