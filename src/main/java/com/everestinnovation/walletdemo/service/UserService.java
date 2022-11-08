@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 
 @Service
@@ -25,7 +26,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public void deleteById(User user){
 
+        log.info("Utente cancellato !");
+        userRepository.deleteById(user.getId());
+    }
     public User save(User user) {
 
             log.info("Utente salvato !");
