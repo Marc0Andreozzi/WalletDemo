@@ -1,8 +1,11 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
+
 import lombok.Data;
 
+
 import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -44,5 +47,19 @@ public class User {
     @NotNull
     @Column(name= "tipo_wallet")
     private String tipoWallet;
+
+    
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password=" + password + '\'' +
+                ", confermaPAssword=" + confermaPassword + '\'' +
+                ", tipoUtenza" + tipoUtenza + '\'' +
+                ", tipoWallet" + tipoWallet +
+                '}';
+    }
 
 }
