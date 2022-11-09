@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 public class AnagraficaUtente {
 
     @Id
+    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 

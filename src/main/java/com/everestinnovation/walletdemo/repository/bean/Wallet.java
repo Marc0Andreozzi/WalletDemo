@@ -10,10 +10,15 @@ import javax.persistence.*;
 public class Wallet {
 
     @Id
+    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name= "nome_wallet")
     private String nomeWallet;
+
+    @Column(name= "saldo")
     private int saldo;
+
     private String tipo;
 }
