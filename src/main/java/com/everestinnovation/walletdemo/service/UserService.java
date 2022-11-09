@@ -28,9 +28,9 @@ public class UserService {
 
     public void deleteById(User user){
 
-       /* if(user.getId()... ){
+     //  if(user.getId()..{
             //throw new UserNotFoundException("user " + user);
-        }*/
+       // }
         log.info("Utente cancellato !");
         userRepository.deleteById(user.getId());
     }
