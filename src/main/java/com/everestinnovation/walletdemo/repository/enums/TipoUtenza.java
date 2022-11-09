@@ -1,4 +1,4 @@
-package com.everestinnovation.walletdemo.repository.bean;
+package com.everestinnovation.walletdemo.repository.enums;
 
 import java.util.Objects;
 
