@@ -1,6 +1,7 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
@@ -9,16 +10,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-@Entity
+@AllArgsConstructor
 @Data
+@Entity
 @Table(name = "utente")
-public class User {
+public class User implements Serializable {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name= "email",unique = true, nullable = false)
     @Size(max = 254, message = "Email può contenere fino a 254 caratteri")
@@ -48,15 +51,19 @@ public class User {
     @Column(name= "tipo_wallet")
     private String tipoWallet;
 
-    
+    public User() {
+
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "  id=" + id +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password=" + password + '\'' +
-                ", confermaPAssword=" + confermaPassword + '\'' +
+                ", confermaPassword=" + confermaPassword + '\'' +
                 ", tipoUtenza" + tipoUtenza + '\'' +
                 ", tipoWallet" + tipoWallet +
                 '}';
