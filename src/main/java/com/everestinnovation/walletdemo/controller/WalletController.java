@@ -31,7 +31,7 @@ public class WalletController {
     public void createWallet (
 
             @Valid @RequestBody Wallet wallet){
-        log.info("Richiesta ricevuta per creare un nuovo Utente.", LogLevel.INFO);
+        log.info("Richiesta ricevuta per creare un nuovo Wallet.", LogLevel.INFO);
         log.info(wallet.toString());
 
         walletService.save(wallet);
@@ -41,7 +41,7 @@ public class WalletController {
     @DeleteMapping("/{id}")
     public void deleteWallet(Wallet wallet){
 
-        log.info("Richiesta ricevuta per cancellare un Utente.", LogLevel.INFO);
+        log.info("Richiesta ricevuta per cancellare un Wallet.", LogLevel.INFO);
         String walletId = String.valueOf(wallet.getId());
         log.info("Id: " + walletId);
 
