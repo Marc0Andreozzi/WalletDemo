@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Data
+@Table(name = "anagrafica_utente")
 public class AnagraficaUtente {
 
     @Id
@@ -56,7 +57,7 @@ public class AnagraficaUtente {
     @Size(min = 8, max = 10)
     private String dataDiNascita;
 
-    @Column(name = "numero di telefono")
+    @Column(name = "numero_di_telefono")
     @Pattern(regexp = "\\(\\+[0-9]{1,5}\\)[0-9]{3,15}", message = "Formato numero non valido!")
     private int numeroDiTelefono;
 }

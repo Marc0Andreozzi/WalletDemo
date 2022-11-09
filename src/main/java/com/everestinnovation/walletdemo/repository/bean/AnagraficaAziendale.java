@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Data
+@Table(name = "anagrafica_aziendale")
 public class AnagraficaAziendale {
 
         @Id

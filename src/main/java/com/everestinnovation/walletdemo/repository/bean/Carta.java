@@ -14,7 +14,6 @@ public class Carta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_carta")
-
     private int idCarta;
 
     @Column(name = "numero_carta")
