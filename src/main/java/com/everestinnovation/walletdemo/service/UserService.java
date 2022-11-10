@@ -37,6 +37,7 @@ public class UserService {
         Optional<User> user = userRepository.findById(id);
         if(user.isPresent()){
             userRepository.delete(user.get());
+            log.info("Utente Cancellato !");
             return true;
         }
         throw new UserException("Utente con id "+id+" non esiste!");
@@ -44,7 +45,7 @@ public class UserService {
 
     public User createUser(User user){
         if(user.getId()==null){
-            log.info("User creato !");
+            log.info("Utente creato !");
             log.info(user.toString());
             userRepository.save(user);
         }else {
