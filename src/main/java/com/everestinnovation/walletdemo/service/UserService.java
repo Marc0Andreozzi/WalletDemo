@@ -1,5 +1,7 @@
 package com.everestinnovation.walletdemo.service;
 
+import com.everestinnovation.walletdemo.exception.UserException;
+import com.everestinnovation.walletdemo.exception.WalletException;
 import com.everestinnovation.walletdemo.repository.UserRepository;
 import com.everestinnovation.walletdemo.repository.WalletRepository;
 import com.everestinnovation.walletdemo.repository.bean.User;
@@ -9,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import java.util.Optional;
 
 
 @Service
@@ -31,21 +33,32 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void deleteById(User user){
-
-     //  if(user.getId()..{
-            //throw new UserNotFoundException("user " + user);
-       // }
-        log.info("Utente cancellato !");
-        userRepository.deleteById(user.getId());
+    public boolean deleteUser(Long id){
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            userRepository.delete(user.get());
+            return true;
+        }
+        throw new UserException("Utente con id "+id+" non esiste!");
     }
 
-    public void saveUserAndWallet(User user, Wallet wallet) {
-
-            log.info("Utente creato con il rispettivo Wallet di default !");
+    public User createUser(User user){
+        if(user.getId()==null){
+            log.info("User creato !");
+            log.info(user.toString());
             userRepository.save(user);
-            walletRepository.save(wallet);
+        }else {
+            userRepository.save(user);
+        }
+        return user;
     }
 
+    public User getById(Long id){
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            return user.get();
+        }
+        throw new WalletException("User con id "+id+" non esiste!");
+    }
 
 }
