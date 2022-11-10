@@ -55,18 +55,6 @@ public class User implements Serializable {
 
     }
 
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "  id=" + id +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", password=" + password + '\'' +
-                ", confermaPassword=" + confermaPassword + '\'' +
-                ", tipoUtenza" + tipoUtenza + '\'' +
-                ", tipoWallet" + tipoWallet +
-                '}';
-    }
+    
 
 }
