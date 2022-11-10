@@ -1,6 +1,7 @@
 package com.everestinnovation.walletdemo.controller;
 
 import com.everestinnovation.walletdemo.repository.bean.User;
+import com.everestinnovation.walletdemo.repository.bean.Wallet;
 import com.everestinnovation.walletdemo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,12 +29,14 @@ public class UserController {
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public void createUser (
+            @Valid @RequestBody User user,
+            @Valid @RequestBody Wallet wallet){
 
-            @Valid @RequestBody User user){
         log.info("Richiesta ricevuta per creare un nuovo Utente.", LogLevel.INFO);
         log.info(user.toString());
+        log.info(wallet.toString());
 
-        userService.save(user);
+        userService.saveUserAndWallet(user,wallet);
 
     }
 
