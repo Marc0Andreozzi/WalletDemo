@@ -47,10 +47,7 @@ public class User implements Serializable {
     @Column(name= "tipo_utenza")
     private String tipoUtenza;
 
-    @NotNull
-    @Column(name= "tipo_wallet")
-    private String tipoWallet;
-
+    
     public User() {
 
     }

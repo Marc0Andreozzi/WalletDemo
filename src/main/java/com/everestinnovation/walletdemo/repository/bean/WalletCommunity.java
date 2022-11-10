@@ -19,5 +19,5 @@ public class WalletCommunity {
 
     @Column(name= "saldo")
     private int saldo;
-    
+
 }
