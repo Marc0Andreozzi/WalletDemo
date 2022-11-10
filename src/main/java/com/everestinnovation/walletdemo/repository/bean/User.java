@@ -21,7 +21,7 @@ public class User implements Serializable {
     @Id
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name= "email",unique = true, nullable = false)
     @Size(max = 254, message = "Email può contenere fino a 254 caratteri")
