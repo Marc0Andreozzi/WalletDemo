@@ -14,7 +14,7 @@ public class AnagraficaUtente {
     @Id
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "nome")
     @Size(min = 3, max = 30)

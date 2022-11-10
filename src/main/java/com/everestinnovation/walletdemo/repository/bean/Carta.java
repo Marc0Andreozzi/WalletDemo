@@ -14,7 +14,7 @@ public class Carta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_carta")
-    private int idCarta;
+    private Long idCarta;
 
     @Column(name = "numero_carta")
     @Pattern(regexp = "([\\d]{4}-){3}[\\d]{4}", message = "Il numero della carta deve essere composto da tre gruppi di quattro cifre separate da trattini.")

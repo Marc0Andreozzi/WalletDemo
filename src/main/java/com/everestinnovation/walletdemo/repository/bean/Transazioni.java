@@ -14,7 +14,7 @@ public class Transazioni {
         @Id
         @Column(name = "id", unique = true, nullable = false)
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+        private Long id;
 
         private String descrizione;
         private Date timestamp;

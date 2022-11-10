@@ -12,7 +12,7 @@ public class WalletCommunity {
     @Id
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name= "nome_wallet")
     private String nomeWallet;
