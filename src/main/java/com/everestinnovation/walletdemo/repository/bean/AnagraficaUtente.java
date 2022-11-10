@@ -14,9 +14,7 @@ public class AnagraficaUtente {
     @Id
     @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    private int idUser;
+    private long id;
 
     @Column(name = "nome")
     @Size(min = 3, max = 30)
@@ -61,4 +59,24 @@ public class AnagraficaUtente {
     @Column(name = "numero_di_telefono")
     @Pattern(regexp = "\\(\\+[0-9]{1,5}\\)[0-9]{3,15}", message = "Formato numero non valido!")
     private int numeroDiTelefono;
+
+    @Column(name = "denominazione_azienda")
+    @Size(min = 3, max = 30)
+    private String denominazioneAzienda;
+
+    @Column(name = "natura_giuridica")
+    @Size(min = 3, max = 30)
+    private String naturaGiuridica; //da inserire? implementazione lista
+
+    @Column(name = "partita_iva")
+    @Size(min = 11, max = 30)
+    private String pIva;
+
+    @Column(name = "fax")
+    @Pattern(regexp = "\\(\\+[0-9]{1,5}\\)[0-9]{3,15}", message = "Formato numero non valido!")
+    private int fax;
+
+    @Column(unique = true)
+    @Size(min = 10, max = 20)
+    private String pec;
 }

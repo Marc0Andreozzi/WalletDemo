@@ -47,7 +47,7 @@ public class User implements Serializable {
     @Column(name= "tipo_utenza")
     private String tipoUtenza;
 
-    
+
     public User() {
 
     }
