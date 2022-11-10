@@ -35,6 +35,7 @@ public class WalletController {
     public ResponseEntity<?> create(@Valid @RequestBody Wallet wallet, BindingResult result){
         ResponseEntity errors = validationErrorService.validate(result);
         if(errors != null) return errors;
+        log.info("Richiesta ricevuta per creare un nuovo Wallet.", LogLevel.INFO);
         Wallet walletSaved = walletService.createWallet(wallet);
         return new ResponseEntity<Wallet>(walletSaved,HttpStatus.CREATED);
     }
