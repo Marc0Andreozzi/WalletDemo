@@ -39,7 +39,7 @@ public class WalletController {
         return new ResponseEntity<Wallet>(walletSaved,HttpStatus.CREATED);
     }
 
-    
+
     @GetMapping("/list")
     public Iterable<Wallet> list(){
         return walletService.list();
