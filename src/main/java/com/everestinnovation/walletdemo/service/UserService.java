@@ -1,7 +1,9 @@
 package com.everestinnovation.walletdemo.service;
 
 import com.everestinnovation.walletdemo.repository.UserRepository;
+import com.everestinnovation.walletdemo.repository.WalletRepository;
 import com.everestinnovation.walletdemo.repository.bean.User;
+import com.everestinnovation.walletdemo.repository.bean.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private WalletRepository walletRepository;
 
     public Iterable<User> list(){
         return userRepository.findAll();
@@ -35,9 +40,12 @@ public class UserService {
         userRepository.deleteById(user.getId());
     }
 
-    public User save(User user) {
+    public void saveUserAndWallet(User user, Wallet wallet) {
 
-            log.info("Utente salvato !");
-            return userRepository.save(user);
+            log.info("Utente creato con il rispettivo Wallet di default !");
+            userRepository.save(user);
+            walletRepository.save(wallet);
     }
+
+
 }

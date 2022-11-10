@@ -1,5 +1,6 @@
 package com.everestinnovation.walletdemo.service;
 
+import com.everestinnovation.walletdemo.exception.WalletException;
 import com.everestinnovation.walletdemo.repository.UserRepository;
 import com.everestinnovation.walletdemo.repository.WalletRepository;
 import com.everestinnovation.walletdemo.repository.bean.User;
@@ -8,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class WalletService {
@@ -25,19 +28,20 @@ public class WalletService {
         this.walletRepository = walletRepository;
     }
 
-    public void deleteById(Wallet wallet){
-
-        //  if(wallet.getId()..{
-        //throw new WalletNotFoundException("wallet " + wallet);
-        // }
-        log.info("Wallet cancellato !");
-        walletRepository.deleteById(wallet.getId());
+    public Wallet getById(Long id){
+        Optional<Wallet> wallet = walletRepository.findById(id);
+        if(wallet.isPresent()){
+            return wallet.get();
+        }
+        throw new WalletException("Wallet con "+id+" non esiste!");
     }
-
-    public Wallet save(Wallet wallet) {
-
-        log.info("Wallet salvato !");
-        return walletRepository.save(wallet);
+    public Wallet createWallet(Wallet wallet){
+        if(wallet.getId()==null){
+            walletRepository.save(wallet);
+        }else {
+            walletRepository.save(wallet);
+        }
+        return wallet;
     }
 }
 
