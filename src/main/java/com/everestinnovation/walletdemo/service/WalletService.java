@@ -33,10 +33,12 @@ public class WalletService {
         if(wallet.isPresent()){
             return wallet.get();
         }
-        throw new WalletException("Wallet con "+id+" non esiste!");
+        throw new WalletException("Wallet con id "+id+" non esiste!");
     }
     public Wallet createWallet(Wallet wallet){
         if(wallet.getId()==null){
+            log.info("Wallet creato !");
+            log.info(wallet.toString());
             walletRepository.save(wallet);
         }else {
             walletRepository.save(wallet);
