@@ -1,10 +1,14 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "wallet")
 public class Wallet {
