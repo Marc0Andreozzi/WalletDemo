@@ -47,9 +47,7 @@ public class User implements Serializable {
     @Column(name= "tipo_utenza")
     private String tipoUtenza;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "wallet_id", referencedColumnName = "id")
-    private Wallet wallet;
+
 
     public User() {
 

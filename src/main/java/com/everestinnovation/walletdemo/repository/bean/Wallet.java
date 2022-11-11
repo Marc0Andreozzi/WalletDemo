@@ -25,4 +25,8 @@ public class Wallet {
     private int saldo;
 
     private String tipo;
+
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "wallet_id")
+    private User user;
 }
