@@ -1,6 +1,7 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -47,7 +50,8 @@ public class User implements Serializable {
     @Column(name= "tipo_utenza")
     private String tipoUtenza;
 
-
+    @OneToMany(mappedBy = "user")
+    private List<Wallet> wallet = new ArrayList<>();
 
     public User() {
 

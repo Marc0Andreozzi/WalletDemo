@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -26,7 +27,10 @@ public class Wallet {
 
     private String tipo;
 
+
     @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "wallet_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+
 }
