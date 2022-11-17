@@ -5,7 +5,7 @@ import com.everestinnovation.walletdemo.repository.bean.Credenziali;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface UserRepository extends JpaRepository<Credenziali, Long> {
+public interface CredenzialiRepository extends JpaRepository<Credenziali, Long> {
 
 
 
