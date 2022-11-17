@@ -5,11 +5,10 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
 @Entity
 @Data
-@Table(name = "anagrafica_ut")
-public class AnagraficaUtente {
+@Table(name = "anagrafica_az")
+public class AnagraficaAziendale {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -48,17 +47,23 @@ public class AnagraficaUtente {
     @Size(min = 5, max = 20)
     private String paese;
 
-    @Column(name = "nato_a")
-    @Size(min = 5, max = 30)
-    private String natoA;
+    @Column(name = "denominazione_azienda")
+    @Size(min = 3, max = 30)
+    private String denominazioneAzienda;
 
-    @Column(name = "data_di_nascita")
-    @Size(min = 8, max = 10)
-    private String dataDiNascita;
+    @Column(name = "natura_giuridica")
+    @Size(min = 3, max = 30)
+    private String naturaGiuridica; //da inserire? implementazione lista
 
-    @Column(name = "numero_di_telefono")
+    @Column(name = "partita_iva")
+    @Size(min = 11, max = 30)
+    private String pIva;
+
+    @Column(name = "fax")
     @Pattern(regexp = "\\(\\+[0-9]{1,5}\\)[0-9]{3,15}", message = "Formato numero non valido!")
-    private int numeroDiTelefono;
+    private int fax;
 
-
+    @Column(unique = true)
+    @Size(min = 10, max = 20)
+    private String pec;
 }

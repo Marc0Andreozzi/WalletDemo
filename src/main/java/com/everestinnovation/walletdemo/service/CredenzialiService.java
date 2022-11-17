@@ -4,7 +4,7 @@ import com.everestinnovation.walletdemo.exception.UserException;
 import com.everestinnovation.walletdemo.exception.WalletException;
 import com.everestinnovation.walletdemo.repository.UserRepository;
 import com.everestinnovation.walletdemo.repository.WalletRepository;
-import com.everestinnovation.walletdemo.repository.bean.User;
+import com.everestinnovation.walletdemo.repository.bean.Credenziali;
 import com.everestinnovation.walletdemo.repository.bean.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class UserService {
     @Autowired
     private WalletRepository walletRepository;
 
-    public Iterable<User> list(){
+    public Iterable<Credenziali> list(){
         return userRepository.findAll();
     }
 
@@ -33,8 +33,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public boolean deleteUser(Long id){
-        Optional<User> user = userRepository.findById(id);
+    public boolean deleteUser(Long id)throws UserException{
+        Optional<Credenziali> user = userRepository.findById(id);
         if(user.isPresent()){
             userRepository.delete(user.get());
             log.info("Utente Cancellato !");
@@ -43,19 +43,37 @@ public class UserService {
         throw new UserException("Utente con id "+id+" non esiste!");
     }
 
-    public User createUser(User user){
-        if(user.getId()==null){
+    public Credenziali createUser(Credenziali credenziali, Wallet wallet){
+        if(credenziali.getId()==null){
             log.info("Utente creato !");
-            log.info(user.toString());
-            userRepository.save(user);
+            log.info(credenziali.toString());
+            userRepository.save(credenziali);
+
+         /*    wallet.setNomeWallet("WalletDefault");
+             wallet.setSaldo(0);
+             wallet.setTipo("Default");
+             wallet.setUser(user);
+             walletRepository.save(wallet);
+*/
         }else {
-            userRepository.save(user);
+            userRepository.save(credenziali);
         }
-        return user;
+        return credenziali;
     }
 
-    public User getById(Long id){
-        Optional<User> user = userRepository.findById(id);
+    /*public User update(Long walletId, Long userId, User user){
+
+        User updatedUser = userRepository.findById(userId).get();
+        Wallet wallet = walletRepository.findById(walletId).get();
+
+        updatedUser.getWallet().add(wallet);
+        userRepository.save(updatedUser);
+
+        return updatedUser;
+    }*/
+
+    public Credenziali getById(Long id){
+        Optional<Credenziali> user = userRepository.findById(id);
         if(user.isPresent()){
             return user.get();
         }
