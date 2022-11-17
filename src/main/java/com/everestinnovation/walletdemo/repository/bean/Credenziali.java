@@ -46,11 +46,12 @@ public class Credenziali implements Serializable {
     private String confermaPassword;
 
     @NotNull
-    @Column(name= "tipo_utenza")
-    private String tipoUtenza;
+    @Column(name= "tipo_utente")
+    private String tipoUtente;
 
     @OneToMany(mappedBy = "credenziali")
     private List<Wallet> wallet = new ArrayList<>();
+
 
     public Credenziali() {
 
