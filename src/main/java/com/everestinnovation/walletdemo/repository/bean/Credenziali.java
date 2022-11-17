@@ -1,7 +1,6 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -18,13 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "utente")
-public class User implements Serializable {
+@Table(name = "credenziali")
+public class Credenziali implements Serializable {
 
     @Id
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "user_id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     @Column(name= "email",unique = true, nullable = false)
     @Size(max = 254, message = "Email può contenere fino a 254 caratteri")
@@ -50,10 +49,10 @@ public class User implements Serializable {
     @Column(name= "tipo_utenza")
     private String tipoUtenza;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "credenziali")
     private List<Wallet> wallet = new ArrayList<>();
 
-    public User() {
+    public Credenziali() {
 
     }
 
