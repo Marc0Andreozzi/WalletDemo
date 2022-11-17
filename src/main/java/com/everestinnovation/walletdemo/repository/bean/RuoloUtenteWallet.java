@@ -11,11 +11,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TipoUtente implements Serializable {
+public class RuoloUtenteWallet implements Serializable {
 
     @Id
-    @Column(name = "id_tipo_ut", unique = true, nullable = false)
+    @Column(name = "id_ruolo", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTipoUt;
-
+    private Long idRuolo;
 }
