@@ -1,15 +1,20 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "anagrafica_ut")
-public class AnagraficaUtente {
+public class AnagraficaUtente implements Serializable {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -60,5 +65,9 @@ public class AnagraficaUtente {
     @Pattern(regexp = "\\(\\+[0-9]{1,5}\\)[0-9]{3,15}", message = "Formato numero non valido!")
     private int numeroDiTelefono;
 
+
+    @OneToOne
+    @JoinColumn(name = "id_cred", referencedColumnName = "id")
+    private Credenziali credenziali;
 
 }

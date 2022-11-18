@@ -1,14 +1,20 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "anagrafica_az")
-public class AnagraficaAziendale {
+public class AnagraficaAziendale implements Serializable {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -66,4 +72,10 @@ public class AnagraficaAziendale {
     @Column(unique = true)
     @Size(min = 10, max = 20)
     private String pec;
+
+
+    @OneToOne
+    @JoinColumn(name = "id_cred", referencedColumnName = "id")
+    private Credenziali credenziali;
+
 }

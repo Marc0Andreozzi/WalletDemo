@@ -6,18 +6,18 @@ public enum TipoWallet {
     PRIVATO(1, "Privato"),
     MULTI_SIG(2, "Multi_sig");
 
-    private final int id;
+    private final int idTipoWallet;
 
     private final String tipoWallet;
 
     TipoWallet(int id, String tipoWallet) {
-        this.id = id;
+        this.idTipoWallet = id;
         this.tipoWallet = tipoWallet;
     }
 
     public static TipoWallet idWallet(int id){
         for(TipoWallet value : TipoWallet.values()){
-            if(id == value.id){
+            if(id == value.idTipoWallet){
                 return value;
             }
         }

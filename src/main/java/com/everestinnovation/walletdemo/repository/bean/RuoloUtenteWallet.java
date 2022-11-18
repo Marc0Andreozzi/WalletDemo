@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class RuoloUtenteWallet implements Serializable {
 
     @Id
-    @Column(name = "id_ruolo", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRuolo;
+    private Long id;
 }

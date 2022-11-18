@@ -1,5 +1,6 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
+import com.everestinnovation.walletdemo.repository.enums.TipoWalletEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,10 +27,13 @@ public class Wallet {
 
     private String tipo;
 
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "id_cred", referencedColumnName = "id")
     private Credenziali credenziali;
+
+    @Enumerated(EnumType.ORDINAL)
+    @JoinColumn(name = "id_tipo_wallet",referencedColumnName = "idTipoWallet")
+    private TipoWalletEnum tipoWalletEnum;
 
 
 }

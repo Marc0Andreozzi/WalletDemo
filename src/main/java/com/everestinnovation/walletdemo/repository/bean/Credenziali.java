@@ -1,6 +1,7 @@
 package com.everestinnovation.walletdemo.repository.bean;
 
 
+import com.everestinnovation.walletdemo.repository.enums.TipoUtenteEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,8 +12,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -21,9 +20,9 @@ import java.util.List;
 public class Credenziali implements Serializable {
 
     @Id
-    @Column(name = "user_id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long idCred;
 
     @Column(name= "email",unique = true, nullable = false)
     @Size(max = 254, message = "Email può contenere fino a 254 caratteri")
@@ -45,12 +44,20 @@ public class Credenziali implements Serializable {
     @Size(min = 6, max = 8)
     private String confermaPassword;
 
-    @NotNull
-    @Column(name= "tipo_utente")
-    private String tipoUtente;
 
-    @OneToMany(mappedBy = "credenziali")
-    private List<Wallet> wallet = new ArrayList<>();
+    @OneToOne(mappedBy = "credenziali")
+    private Wallet wallet;
+
+
+    @OneToOne(mappedBy = "credenziali")
+    private AnagraficaUtente anagraficaUtente;
+
+    @OneToOne(mappedBy = "credenziali")
+    private AnagraficaAziendale anagraficaAziendale;
+
+    @Enumerated(EnumType.ORDINAL)
+    @JoinColumn(name = "id_tipo_ut",referencedColumnName = "idTipoUt")
+    private TipoUtenteEnum tipoUtenteEnum;
 
 
     public Credenziali() {
